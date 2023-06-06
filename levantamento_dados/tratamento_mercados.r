@@ -24,4 +24,8 @@ dados <- rbind(linha_titulo, dados)
 # Separando a coluna "endereco" em duas colunas
 base_dados <- separate(dados, endereco, into = c("rua", "telefone"), sep = "·")
 
+# Criando uma coluna id
+base_dados <- base_dados %>%
+  mutate(id = row_number()) %>%
+  select(id, everything())
 
