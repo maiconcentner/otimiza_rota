@@ -30,4 +30,3 @@ for i in range(1,120):
             print(linha)
             f.write(linha)
     print(url_pag)
-#print(type(endereco_text))
