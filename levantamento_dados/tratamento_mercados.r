@@ -29,9 +29,20 @@ base_dados <- base_dados %>%
 mutate(id = row_number()) %>%
 select(id, everything())
 
+# Removendo endereços duplicados
+base_dados_sem_duplicados <- distinct(base_dados, rua, .keep_all = TRUE)
+
+# Somente endereços sem duplicatas
+enderecos_sem_duplicados <- base_dados_sem_duplicados$rua
+print(enderecos_sem_duplicados)
+
+
 # Somente enderecos
-enderecos <- base_dados$rua
-print(enderecos)
+enderecos_sem <- base_dados_sem_duplicados$rua
+print(enderecos_sem)
 
 #salvando lista
-write.csv(enderecos, file = "enderecos.csv", row.names = FALSE)
+write.csv(enderecos_sem, file = "enderecos.csv", row.names = FALSE)
+
+#salvando base de dados completa
+write.csv(base_dados_sem_duplicados, file = "base_dados.csv", row.names = FALSE)
