@@ -26,6 +26,12 @@ base_dados <- separate(dados, endereco, into = c("rua", "telefone"), sep = "·")
 
 # Criando uma coluna id
 base_dados <- base_dados %>%
-  mutate(id = row_number()) %>%
-  select(id, everything())
+mutate(id = row_number()) %>%
+select(id, everything())
 
+# Somente enderecos
+enderecos <- base_dados$rua
+print(enderecos)
+
+#salvando lista
+write.csv(enderecos, file = "enderecos.csv", row.names = FALSE)
